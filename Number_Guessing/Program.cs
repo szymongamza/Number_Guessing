@@ -10,6 +10,7 @@ namespace Number_Guessing
             string z;
             int a = 0;
             int b = 100;
+            int i = 0;
             Random random = new();
             x = random.Next(a, b+1); // +1 because <maxValue
             bool win = false;
@@ -29,6 +30,9 @@ namespace Number_Guessing
                         y = Int32.Parse(z);
                     }
                 } while (y == -1);
+
+                i++;
+
                 if (y > x)
                 {
                     Console.WriteLine("Wrong number! Try lower");
@@ -39,9 +43,10 @@ namespace Number_Guessing
                 }
                 else if (y == x)
                 {
-                    Console.WriteLine("Right number! You Won");
+                    Console.WriteLine($"Right number! You Won on {i} attempt");
                     win = true;
                 }
+                
             } while (win == false);
             Console.WriteLine();
             Console.WriteLine("Thank you for playing my game!");
