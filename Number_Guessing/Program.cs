@@ -7,15 +7,28 @@ namespace Number_Guessing
         static void Main(string[] args)
         {
             int x,y;
-            int a = 1;
-            int b = 10;
+            string z;
+            int a = 0;
+            int b = 100;
             Random random = new();
             x = random.Next(a, b+1); // +1 because <maxValue
             bool win = false;
             Console.WriteLine($"Try guess number from {a} to {b}");
             do
             {
-                y = Int32.Parse(Console.ReadLine());
+                do
+                {
+                    z = Console.ReadLine();
+                    if (!Int32.TryParse(z, out y))
+                    {
+                        Console.WriteLine("USE NUMBER!");
+                        y = -1;
+                    }
+                    else
+                    {
+                        y = Int32.Parse(z);
+                    }
+                } while (y == -1);
                 if (y > x)
                 {
                     Console.WriteLine("Wrong number! Try lower");
